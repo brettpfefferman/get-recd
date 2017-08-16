@@ -135,3 +135,34 @@ margin-top: 10%;
 .navbartop {
     background-color: black !important;
 }
+
+.button.hollow.button {
+    border-radius: 37px;
+    align: center;
+    margin-right: 57px;
+    width: 140px;
+    height: 44px;
+}
+
+div.SpecRec {
+    font-family: 'Allerta Stencil', sans-serif;
+    text-align: center;
+    font-size: 38px;
+    margin-top: 12px;
+}
+
+div.albums {
+    text-align: center;
+    font-size: 13px;
+}
+
+div.buttons {
+    text-align: center;
+    margin-top: 22px;
+}
+
+.cover {
+    border-radius: 13px;
+}
+
+

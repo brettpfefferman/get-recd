@@ -1,21 +1,34 @@
 <%- include('./../_partials/header') %>
-    <div>
-      add to list: <%= newList.title %> <br>
-      (id = <%= newList._id %>)
+    <div class="SpecRec">
+      Add to your list: <%= newList.title %> <br>
+      <!-- (id = <%= newList._id %>) -->
     </div>
-
-    <a href="/myrecs/new">New Search</a><br>
-
-    <form action="/myrecs" method="POST">
-      <input type="submit"><br><br>
-      <% records.results.forEach(function (record) { %>
-        <input type="checkbox" name="id" value="<%= record.id %>">
-        <a href="https://www.discogs.com<%= record.uri %>">link</a>
-        <%= record.title %>
-        <img src="<%= record.thumb %>"><br><br>
-      <% }) %>
-    </form>
-
-    
-</body>
-</html>
+    <div class="buttons">
+      <form style="display:inline" action="/myrecs/new" method="get">
+        <button class="hollow button">New Search</button>
+      </form>
+      <button class="hollow button success" href"#">submit<button> 
+    </div>
+  <table class="stack">
+    <thead>
+      <tr>
+        <th width="200">Album Cover</th>
+      </tr> 
+    </thead> 
+      <form action="/myrecs" method="POST"> 
+        <tbody>  
+          <tr>     
+            <br><br>
+              <% records.results.forEach(function (record) { %>
+                <div class="albums">
+                  <input type="checkbox" name="id" value="<%= record.id %>">
+                  <a href="https://www.discogs.com<%= record.uri %>"><img class="cover" src="<%= record.thumb %>"></a>
+                  <br>
+                  <%= record.title %>
+                  </div>
+                <br><br>
+              <% }) %>
+          </tr>
+        </tbody>
+      </form>
+  </table>
