@@ -18,7 +18,7 @@ function edit(req, res) {
 
 function search(req, res) {
   var listTitle = req.body.title;
-  var list = new List({title: listTitle})
+  var list = new List({user: req.user._id, title: listTitle})
   list.save(function (err, newList) {
     console.log('err =', err)
     if (err) return res.json({err: err})
