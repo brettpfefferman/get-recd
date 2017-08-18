@@ -83,11 +83,7 @@ function update(req, res) {
 }
 
 function deleteList(req, res) {
-  List.findById(req.params.id, (err, list) => {
-    list.remove();
-    list.save();
-    res.redirect('/');
-  });
+  res.send("DELETE");
 }
 
 //function page(req, res) {
@@ -102,5 +98,4 @@ module.exports = {
   add,
   about,
   delete: deleteList
-  //page
 }

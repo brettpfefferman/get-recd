@@ -1,15 +1,19 @@
 <%- include('./../_partials/header') %>
 
-<form action="/myrecs/add" method="post">
+
   <h1>My Recs</h1>
   
 <div class="row">
 <% lists.forEach(function(list) { %>
       <h4> <%= list.title %></h4> 
       <span>
-        <button class="hollow button alert" onclick="clickAlert()" value="Click-2-Alert" href="#">Delete</button>
-        <button class="hollow button secondary" href="#">Edit</button>
-    </span>
+        <form action="/<%= list._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="hollow button alert" onclick="clickAlert()" value="Click-2-Alert" href="#">Delete</button>
+        </form>
+        <form action="" method="">
+          <button type="submit" class="hollow button secondary" href="#">Edit</button>
+        </form>
+        </span>
       <br>
   <% list.albums.forEach(function(album) { %>
       <ul>
@@ -23,7 +27,6 @@
 <% }) %>
 
 </div>
-</form>
 
 
 

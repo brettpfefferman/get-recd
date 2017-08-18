@@ -1,8 +1,11 @@
 var router = require('express').Router();
 var passport = require('passport');
+var List = require('../models/list');
 
 router.get('/', function(req, res) {
-  res.render('index', {user: req.user});
+  List.find({}, (err, lists) => {
+    res.render('index', {user: req.user, lists: lists});
+  })
 });
 
 router.get('/auth/google', passport.authenticate(
