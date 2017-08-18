@@ -3,7 +3,7 @@ var passport = require('passport');
 var List = require('../models/list');
 
 router.get('/', function(req, res) {
-  List.find({}, (err, lists) => {
+  List.find({}).populate('albums').exec((err, lists) => {
     res.render('index', {user: req.user, lists: lists});
   })
 });
