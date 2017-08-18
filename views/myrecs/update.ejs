@@ -1,0 +1,20 @@
+<%- include('./../_partials/header') %>
+<form action="/myrecs/<%= listId %>" method="POST">
+  <h1> Add to your list:  </h1>
+  <input class="submitHolder" type="submit"></input>
+    <br>
+    <br>
+    <br>
+    <br>
+    <% records.results.forEach(function (record) { %>
+    <div class="albums large-3 columns">
+        <span class="recordlabel"><%= record.title %></span>
+        <a href="https://www.discogs.com<%= record.uri %>" target="_blank"><img class="albumimg" src="<%= record.thumb %>"></a>
+        <br><input class="recordcheck" type="checkbox" name="id" value="<%= record.id %>">
+        <br><br>
+    </div>
+  <% }) %>
+</form>
+
+</body>
+</html>
