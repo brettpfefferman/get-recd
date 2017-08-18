@@ -1,8 +1,20 @@
 <%- include('./_partials/header') %>
     <h1>Get Recd</h1>
     <ul>
+<% lists.forEach(function(list) { %>
+      <img class="rootindximg" src="<%= list.albums[0] && list.albums[0].thumb %>" alt=""> 
+      
+      <br>
+  <% list.albums.forEach(function(album) { %>
+      <ul>
+        <li> <a href=" <%= album.url %>" target="_blank"><%= album.title %></a></p></li>  
+      </ul> 
 
-      <%= lists %>
+  
+     
+   <% }) %>
+   
+<% }) %>
     </ul>
     <!-- <a href="/myrecs">My Recs</a> -->
   </body>
