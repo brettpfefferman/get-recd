@@ -20,7 +20,7 @@ function edit(req, res) {
 
 function search(req, res) {
   var listTitle = req.body.title;
-  var list = new List({user: req.user._id, title: listTitle})
+  var list = new List({user: req.user._id, title: listTitle, search: req.body.search})
   list.save(function (err, newList) {
     console.log('err =', err)
     if (err) return res.json({err: err})
@@ -75,20 +75,38 @@ function about(req, res) {
   res.render('myrecs/about', {user: req.user});
 }
 
-function edit(req, res) {
-
-}
 function update(req, res) {
-  
+  var listId = req.body.id;
+  List.findById(req.body.id, (err, list) => {
+
+  var options = {
+    url: rootURL + 'database/search?q=' + list.search + '&type=master&format_exact=Vinyl&-format_exact=cd&-format_exact=cassette&-format=promo&type=release&artist=' + list.search + '&per_page=100',
+    headers: {
+      'User-Agent': 'w1lujeng',
+      'Authorization': 'Discogs key=' + process.env.DISCOGS_KEY + ',' 
+      + 'secret=' + process.env.SECRET
+    }  
+  }
+  request(options, function(err, response, body) {
+    var records = JSON.parse(body);
+    res.render('myrecs/update', {records, user: req.user, listId});
+  });
+})
+}
+
+function addmore(req, res) {
+  res.redirect('/');
 }
 
 function deleteList(req, res) {
-  res.send("DELETE");
+  List.findByIdAndRemove(req.params.id, (list) => {
+    console.log(list);
+  })
+  List.find({user: req.user._id}).populate('albums').exec((err, lists) => {
+    res.render('myrecs/', {user: req.user, lists: lists} );
+  })  
 }
 
-//function page(req, res) {
-  //res.send('page, need to do');
-//}
 
 module.exports = {
   index,
@@ -97,5 +115,7 @@ module.exports = {
   search,
   add,
   about,
-  delete: deleteList
+  delete: deleteList,
+  update,
+  addmore
 }

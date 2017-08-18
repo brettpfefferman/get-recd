@@ -7,11 +7,11 @@
 <% lists.forEach(function(list) { %>
       <h4> <%= list.title %></h4> 
       <span>
-        <form action="/<%= list._id %>?_method=DELETE" method="POST">
+        <form action="myrecs/<%= list._id %>?_method=DELETE" method="post">
           <button type="submit" class="hollow button alert" onclick="clickAlert()" value="Click-2-Alert" href="#">Delete</button>
         </form>
-        <form action="" method="">
-          <button type="submit" class="hollow button secondary" href="#">Edit</button>
+        <form action="myrecs/update" method="post">
+          <button name="id" value="<%= list._id %>" type="submit" class="hollow button secondary" href="#">Add</button>
         </form>
         </span>
       <br>
