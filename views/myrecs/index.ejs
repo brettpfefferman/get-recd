@@ -1,32 +1,31 @@
 <%- include('./../_partials/header') %>
 
-<ul>
-<% lists.forEach(function(list) { %>
-
-  <li> 
-   <%= list.title %>
-   <% list.albums.forEach(function(album) { %>
-      <%= album.title %>
-      <%= album.thumb %>
-      <%= album.url %>
-   <% }) %>
-  </li>
-  
-</ul>  
-<% }) %>
-
-
-
 <form action="/myrecs/add" method="post">
   <h1>My Recs</h1>
-  <button class="hollow button secondary" href="#">Add to List</button>
-</form>
-<script>
-function clickAlert() {
-alert("Are you sure you want to delete this playlist?");
-}
-</script>
-<button class="hollow button alert" onclick="clickAlert()" value="Click-2-Alert" href="#">Delete</button>
   
+<div class="row">
+<% lists.forEach(function(list) { %>
+      <h4> <%= list.title %></h4> 
+      <span>
+        <button class="hollow button alert" onclick="clickAlert()" value="Click-2-Alert" href="#">Delete</button>
+        <button class="hollow button secondary" href="#">Edit</button>
+    </span>
+      <br>
+  <% list.albums.forEach(function(album) { %>
+      <ul>
+        <li><img class="listimg" src="<%= album.thumb %>" alt=""> <a href=" <%= album.url %>" target="_blank"><%= album.title %></a></p></li>  
+      </ul> 
+
+  
+     
+   <% }) %>
+   
+<% }) %>
+
+</div>
+</form>
+
+
+
 </body>
 </html>
