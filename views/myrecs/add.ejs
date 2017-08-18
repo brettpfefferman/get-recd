@@ -9,7 +9,7 @@
       <% records.results.forEach(function (record) { %>
       <div class="albums large-3 columns">
           <span class="recordlabel"><%= record.title %></span>
-          <a href="https://www.discogs.com<%= record.uri %>"><img src="<%= record.thumb %>"></a>
+          <a href="https://www.discogs.com<%= record.uri %>" target="_blank"><img class="albumimg" src="<%= record.thumb %>"></a>
           <br><input class="recordcheck" type="checkbox" name="id" value="<%= record.id %>">
           <br><br>
       </div>

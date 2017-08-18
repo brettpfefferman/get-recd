@@ -219,7 +219,7 @@ a {
     border-color:lightgray;
 }
 
-img {
+.albumimg {
     max-width: 250px;
     max-height: 250px;
     width: 250px;
@@ -240,4 +240,11 @@ img {
    font-size: 12px;
    border-radius: 2px;
 }
+
+.listimg {
+    height: 75px;
+    width: 75px;
+    
+}
+
 
