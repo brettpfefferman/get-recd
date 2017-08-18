@@ -1,4 +1,22 @@
 <%- include('./../_partials/header') %>
+
+<ul>
+<% lists.forEach(function(list) { %>
+
+  <li> 
+   <%= list.title %>
+   <% list.albums.forEach(function(album) { %>
+      <%= album.title %>
+      <%= album.thumb %>
+      <%= album.url %>
+   <% }) %>
+  </li>
+  
+</ul>  
+<% }) %>
+
+
+
 <form action="/myrecs/add" method="post">
   <h1>My Recs</h1>
   <button class="hollow button secondary" href="#">Add to List</button>
