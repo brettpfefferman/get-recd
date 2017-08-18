@@ -5,7 +5,9 @@ var List = require('../models/list');
 var Album = require('../models/album');
 
 function index(req, res) {
-  res.render('myrecs/index', {user: req.user});
+  List.find({user: req.user._id}).populate('albums').exec((err, lists) => {
+    res.render('myrecs/index', {user: req.user, lists: lists});
+  })  
 };
 
 function newRec(req, res) {
