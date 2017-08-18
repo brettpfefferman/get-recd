@@ -14,11 +14,16 @@
           <button name="id" value="<%= list._id %>" type="submit" class="hollow button secondary" href="#">Add</button>
         </form>
         </span>
-      <br>
   <% list.albums.forEach(function(album) { %>
-      <ul>
-        <li><img class="listimg" src="<%= album.thumb %>" alt=""> <a href=" <%= album.url %>" target="_blank"><%= album.title %></a></p></li>  
-      </ul> 
+      <div class= "row">
+        <ul>
+          <a href=" <%= album.url %>" target="_blank">
+            <img class="listimg large-3 columns" src="<%= album.thumb %>" alt="" <%= album.title %>
+            <br>
+          </a> 
+        </ul>
+        <br> 
+      </div> 
 
   
      
